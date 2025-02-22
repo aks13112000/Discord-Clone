@@ -54,6 +54,9 @@ export const InitialModal = () => {
         console.log(values);
     }
 
+    if(!isMounted){
+        return null;
+    }
     return (
       <Dialog open>
         <DialogContent className="bg-white text-black p-0
@@ -70,7 +73,7 @@ export const InitialModal = () => {
                     <form onSubmit={form.handleSubmit(onSubmit)}
                     className="space-y-8 px-6">
                         <div className="space-y-8 px-6">
-                            <div className="flex items-center justify-center text">
+                            <div className="flex items-center justify-center text-center">
                                 TODO: Image Upload
                                 </div>
                                 <FormField
