@@ -3,7 +3,7 @@
 import * as z from "zod";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {useEffect,useState} from "react";
-import {useForm} from "react-hook-form";
+import {useForm,Controller} from "react-hook-form";
 
 
 import {
@@ -25,6 +25,7 @@ import{
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { FileUpload } from "@/components/file-upload";
+import { log } from "console";
 
 const formSchema = z.object({
     name: z.string().min(1, {
@@ -76,16 +77,18 @@ export const InitialModal = () => {
                     className="space-y-8 px-6">
                         <div className="space-y-8 px-6">
                             <div className="flex items-center justify-center text-center">
-                                <FormField
+                                <Controller
                                 control={form.control}
                                 name="imageUrl"
-                                render={({field})=>(
+                                render={({field}) => (
                                     <FormItem>
                                         <FormControl>
                                             <FileUpload
                                             endpoint="serverImage"
                                             value={field.value}
-                                            onChange={field.onChange}/>
+                                            onChange={(url) => field.onChange(url)
+                                                
+                                            }/>
                                         </FormControl>
                                     </FormItem>
                                 )}    />
@@ -106,7 +109,7 @@ export const InitialModal = () => {
                                             disabled={isLoding}
                                             className="bg-zinc-300/50 border-0
                                             focus-visible:ring-0 text-black
-                                            focus-visble:ring-offset-0"
+                                            focus-visible:ring-offset-0"
                                             placeholder="Enter server name"
                                             {...field}
                                             />
