@@ -26,7 +26,6 @@ import{
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { FileUpload } from "@/components/file-upload";
-import { log } from "console";
 import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
