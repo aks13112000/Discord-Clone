@@ -61,7 +61,7 @@ export const InitialModal = () => {
         console.log("Submitting values:", values);
         await axios.post("/api/servers",values);
         console.log("Server created successfully");
-       console.log(values)
+       console.log('lol',values)
        form.reset();
        router.refresh();
        window.location.reload();
