@@ -21,29 +21,42 @@ export async function POST(req:Request){
         if(name==="general"){
             return new NextResponse("Channel name cannot be 'general'",{status:400});
         }
-
-        const server=await db.server.update({
-            where:{
-                id:serverId,
-                members:{
-                    some:{
-                        profileId:profile.id, role:{
-                            in:[MemberRole.ADMIN,MemberRole.MODERATOR]
+        const server = await db.server.findFirst({
+            where: {
+                id: serverId,
+                OR: [
+                    { profileId: profile.id }, // Allow the server owner
+                    {
+                        members: {
+                            some: {
+                                profileId: profile.id,
+                                role: { in: [MemberRole.ADMIN, MemberRole.MODERATOR] }
+                            }
                         }
                     }
-                }
-            },
-            data:{
-                channels:{
-                    create:{
-                        profileId:profile.id,
+                ]
+            }
+        });
+        
+        if (!server) {
+            return new NextResponse("Server not found or user lacks permissions", { status: 403 });
+        }
+        const updatedServer = await db.server.update({
+            where: { id: serverId },
+            data: {
+                channels: {
+                    create: {
+                        profileId: profile.id,
                         name,
-                        type,
+                        type
                     }
                 }
             }
-    });
-    return NextResponse.json(server);
+        });
+        
+        return NextResponse.json(updatedServer);
+        
+        
 }
     catch(error){
         console.log("[CHANNELS_POST]",error);
