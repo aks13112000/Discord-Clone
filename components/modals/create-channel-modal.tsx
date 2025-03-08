@@ -3,7 +3,7 @@
 import axios from "axios";
 import * as z from "zod";
 import {zodResolver} from "@hookform/resolvers/zod";
-import {useForm} from "react-hook-form";
+import {useForm,Controller} from "react-hook-form";
 import qs from "query-string";
 
 
@@ -57,7 +57,7 @@ export const CreateChannelModal = () => {
 
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
      try{
-        const url=qs.stringify({url:"/api/channels",query:{serverId:params?.serverId}});
+        const url=qs.stringifyUrl({url:"/api/channels",query:{serverId:params?.serverId}});
         await axios.post(url,values);
 
         
@@ -84,9 +84,8 @@ export const CreateChannelModal = () => {
                 </DialogHeader>
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)}
-                    className="space-y-8 px-6">
+                    className="space-y-8">
                         <div className="space-y-8 px-6">
-                           
                                 <FormField
                                 control={form.control}
                                 name="name"
