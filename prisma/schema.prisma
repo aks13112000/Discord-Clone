@@ -60,6 +60,12 @@ model Member{
   serverId String
   server Server @relation(fields:[serverId], references:[id], onDelete:Cascade)
 
+  messages Messages[]
+  directMessage DirectMessage[]
+
+  ConversationInitiated Conversation[] @relation("MemberOne")
+  ConversationReceived Conversation[] @relation("MemberTwo")
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -85,9 +91,68 @@ model Channel{
   serverId String
   server Server @relation(fields:[serverId], references:[id], onDelete:Cascade)
 
+  messages Messages[]
+
 createdAt DateTime @default(now())
 updatedAt DateTime @updatedAt
 
   @@index([profileId])
   @@index([serverId])
+}
+
+
+model message {
+  id String @id @default(uuid())
+  content String @db.Text
+
+  fileUrl String? @db.Text
+
+  memberId String
+  member Member @relation(fields: [memberId], references: [id], onDelete:Cascade)
+
+  channelId String
+  channel Channel @relation(fields: [channelId], references: [id], onDelete: Cascade)
+
+  deleted Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([channelId])
+  @@index([memberId])
+
+}
+
+model Conversation {
+  id String @id  @default(uuid())
+
+  memberOneId String
+  memberOneId Member @relation("MemberOne", fields: [memberOneId], references: [id], onDelete:Cascade)
+
+  memberTwoId String
+  memberTwoId Member @relation("MemberTwo", fields: [memberTwoId], references: [id], onDelete:Cascade)
+
+directMessages DirectMessage[]
+
+  @index([memberTwoId])
+
+  @@unique([memberOneId, memberTwoId])
+}
+
+model DirectMessage {
+  id String @id @default(uuid())
+  content String @db.Text
+  fileUrl String? @db.Text
+
+  memberId String
+  member Member @relation(fileds: [memberId], references: [id], onDelete: Cascade)
+
+  ConversationId String
+  conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([memberId])
+  @@index([conversationId])
 }
