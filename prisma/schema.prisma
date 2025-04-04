@@ -60,11 +60,11 @@ model Member{
   serverId String
   server Server @relation(fields:[serverId], references:[id], onDelete:Cascade)
 
-  messages Messages[]
-  directMessage DirectMessage[]
+  Messages Message[]
+  directMessages DirectMessage[]
 
-  ConversationInitiated Conversation[] @relation("MemberOne")
-  ConversationReceived Conversation[] @relation("MemberTwo")
+  conversationsInitiated Conversation[] @relation("MemberOne")
+  conversationsReceived Conversation[] @relation("MemberTwo")
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -91,7 +91,7 @@ model Channel{
   serverId String
   server Server @relation(fields:[serverId], references:[id], onDelete:Cascade)
 
-  messages Messages[]
+  messages Message[]
 
 createdAt DateTime @default(now())
 updatedAt DateTime @updatedAt
@@ -101,7 +101,7 @@ updatedAt DateTime @updatedAt
 }
 
 
-model message {
+model Message {
   id String @id @default(uuid())
   content String @db.Text
 
@@ -127,14 +127,15 @@ model Conversation {
   id String @id  @default(uuid())
 
   memberOneId String
-  memberOneId Member @relation("MemberOne", fields: [memberOneId], references: [id], onDelete:Cascade)
+  memberOne Member @relation("MemberOne", fields: [memberOneId], references: [id], onDelete:Cascade)
 
   memberTwoId String
-  memberTwoId Member @relation("MemberTwo", fields: [memberTwoId], references: [id], onDelete:Cascade)
+  memberTwo Member @relation("MemberTwo", fields: [memberTwoId], references: [id], onDelete:Cascade)
+
 
 directMessages DirectMessage[]
 
-  @index([memberTwoId])
+  @@index([memberTwoId])
 
   @@unique([memberOneId, memberTwoId])
 }
@@ -145,10 +146,12 @@ model DirectMessage {
   fileUrl String? @db.Text
 
   memberId String
-  member Member @relation(fileds: [memberId], references: [id], onDelete: Cascade)
+  member Member @relation(fields: [memberId], references: [id], onDelete: Cascade)
 
-  ConversationId String
+  conversationId String
   conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  deleted Boolean @default(false)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
