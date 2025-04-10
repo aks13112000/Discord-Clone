@@ -23,7 +23,7 @@ export async function GET(req:Request){
         let messages:Message[]=[];
 
         if(cursor){
-            messages:await db.message.findMany({
+            messages=await db.message.findMany({
                 take:MESSAGES_BATCH,
                 skip:1,
                 cursor:{
@@ -44,7 +44,7 @@ export async function GET(req:Request){
                 }
             })
         }else{
-            messages:await db.message.findMany({
+            messages = await db.message.findMany({
                 take:MESSAGES_BATCH,
                 where:{
                     channelId
