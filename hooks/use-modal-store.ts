@@ -3,7 +3,7 @@ import { Server } from "http";
 import { create } from "zustand";
 
 export type ModalType = "createServer" | "invite" | "editServer" |
-"members"|"createChannel" |"leaveServer" | "deleteServer"|"deleteChannel"|"editChannel"|"editMember"|"editRole"|"editProfile"|"editServerIcon"|"editServerBanner"|"editServerName"|"editChannelName"|"editChannelType"|"deleteMember"|"deleteRole"|"deleteChannel"|"deleteServerIcon"|"deleteServerBanner"|"messageFile";
+"members"|"createChannel" |"leaveServer" | "deleteServer"|"deleteChannel"|"editChannel"|"editMember"|"editRole"|"editProfile"|"editServerIcon"|"editServerBanner"|"editServerName"|"editChannelName"|"editChannelType"|"deleteMember"|"deleteRole"|"deleteChannel"|"deleteServerIcon"|"deleteServerBanner"|"messageFile"|"deleteMessage";
 
 
 interface ModalData {
