@@ -16,6 +16,8 @@ export const currentProfilePages = async (req: NextApiRequest) => {
             userId,
         },
     });
+    
+      
 
     return profile;
 } catch (error) {
