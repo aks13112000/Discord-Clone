@@ -33,19 +33,19 @@ npm run dev
 
 ### Create Channel
 
-![Create_Channel](/screenshots/creating Channel.jpg)
+![Create_Channel](/screenshots/creatingChannel.jpg)
 
 ### Creating Server
 
-![Creating_Server](/screenshots/Creating Server.jpg)
+![Creating_Server](/screenshots/CreatingServer.jpg)
 
 ### Inviting Friends
 
-![Inviting_Friends](/screenshots/Inviting Friends.jpg)
+![Inviting_Friends](/screenshots/InvitingFriends.jpg)
 
 ### Voice Channel
 
-![Voice_Channel](/screenshots/Voice Channel.jpg)
+![Voice_Channel](/screenshots/VoiceChannel.jpg)
 
 ### Chat
 
