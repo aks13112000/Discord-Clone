@@ -3,7 +3,7 @@ import { NextApiRequest } from "next";
 import { NextApiResponseServerIO } from "@/types";
 import { currentProfilePages } from "@/lib/current-profile-pages";
 import { db } from "@/lib/db";
-import { channel } from "diagnostics_channel";
+
 
 export default async function handler(
     req: NextApiRequest,
