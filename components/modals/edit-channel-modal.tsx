@@ -3,7 +3,7 @@
 import axios from "axios";
 import * as z from "zod";
 import {zodResolver} from "@hookform/resolvers/zod";
-import {useForm,Controller} from "react-hook-form";
+import {useForm} from "react-hook-form";
 import qs from "query-string";
 
 
@@ -30,7 +30,7 @@ import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/c
 
 import { ChannelType } from "@prisma/client";
 import { useEffect } from "react";
-import { channel } from "diagnostics_channel";
+
 
 const formSchema = z.object({
     name: z.string().min(1, {
