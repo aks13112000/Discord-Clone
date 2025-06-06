@@ -1,10 +1,10 @@
 import { NextApiRequest } from "next";
 
 import { NextApiResponseServerIO } from "@/types";
-import { currentProfile } from "@/lib/current-profile";
+
 import { currentProfilePages } from "@/lib/current-profile-pages";
 import { db } from "@/lib/db";
-import { error } from "console";
+
 import { MemberRole } from "@prisma/client";
 
 export default async function handler(
