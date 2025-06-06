@@ -4,14 +4,18 @@ import { redirect } from "next/navigation";
 import { db } from "@/lib/db";
 import { currentProfile } from "@/lib/current-profile";
 
+interface PageProps {
+    params: {
+    inviteCode: string;
+    };
+};
 
 
 const InviteCodePage = async ({
-  params,
-}: {
-  params: { inviteCode: string };
-}) => {
-  const profile = await currentProfile();
+    params
+}: PageProps) => {
+    const profile = await currentProfile();
+
     if(!profile) {
         return RedirectToSignIn({});
     }
@@ -32,7 +36,7 @@ const InviteCodePage = async ({
     })
 
     if (existingServer) {
-        return redirect(`/server/${existingServer.id}`)
+        return redirect(/server/${existingServer.id})
     }
 
     const server = await db.server.update({
@@ -51,7 +55,7 @@ const InviteCodePage = async ({
     })
 
     if (server) {
-        return redirect(`/server/${server.id}`);
+        return redirect(/server/${server.id});
     }
 
  return null;
