@@ -7,7 +7,6 @@ import {
     MemberRole, 
     Server
  } from "@prisma/client";
-import { group } from "console";
 
 import { Lock ,Edit, Hash, Mic, Trash, Video } from "lucide-react";
 import { useParams } from "next/navigation";
@@ -69,14 +68,12 @@ export const ServerChannel = ({
                 <Edit
                 onClick={(e)=>onAction(e,"editChannel")}
                 className="hidden group-hover:block w-4 h-4 text-zinc-500 hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-300 transition" onClick={()=>onOpen("editChannel",{server,channel})}/>
-
             </ActionTooltip>
             <ActionTooltip label="Delete">
                 <Trash
                 onClick={(e)=>onAction(e,"deleteChannel")}
                 className="hidden group-hover:block w-4 h-4 text-zinc-500 hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-300 transition" onClick={()=>onOpen("deleteChannel",{server,channel})}/>
-
-            </ActionTooltip>
+             </ActionTooltip>
         </div>
        ) }
        {channel.name === "general" && (
