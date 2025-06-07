@@ -5,21 +5,19 @@ import { db } from "@/lib/db";
 import { currentProfile } from "@/lib/current-profile";
 
 interface InviteCodePageProps {
-    params: {
+    params: Promise<{
     inviteCode: string;
-    };
+    }>;
 };
 
 
 const InviteCodePage = async ({
-  params,
-}: {
-  params: { inviteCode: string };
-}) => {
-  const profile = await currentProfile();
+    params
+}: InviteCodePageProps) => {
+    const profile = await currentProfile();
 
     if(!profile) {
-        return <RedirectToSignIn />;
+        return RedirectToSignIn({});
     }
 
     if(!params.inviteCode) {
@@ -56,8 +54,12 @@ const InviteCodePage = async ({
         }
     })
 
-    return redirect(`/server/${server.id}`); 
+    if (server) {
+        return redirect(`/server/${server.id}`);
+    }
 
-};
+ return null;
+
+}
 
 export default InviteCodePage;
