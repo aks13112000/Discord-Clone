@@ -10,10 +10,10 @@ import { currentProfile } from "@/lib/current-profile";
 import { MediaRoom } from "@/components/media-room";
 
 interface MemberIdPageProps{
-  params:{
+  params: Promise<{
     memberId:string;
     serverId:string;
-  },
+  }>,
   searchParams:{
     video?:boolean;
   }
