@@ -14,9 +14,9 @@ interface MemberIdPageProps{
     memberId:string;
     serverId:string;
   }>,
-  searchParams:{
+  searchParams:Promise<{
     video?:boolean;
-  }
+  }>
 }
 
 const MemberIdPage = async ({params,searchParams}:MemberIdPageProps) => {
