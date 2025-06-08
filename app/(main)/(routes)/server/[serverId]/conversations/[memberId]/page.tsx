@@ -20,13 +20,15 @@ interface MemberIdPageProps{
 }
 
 const MemberIdPage = async ({params,searchParams}:MemberIdPageProps) => {
+  const {memberId,serverId}= await params;
+  const {video} = await searchParams;
   const profile=await currentProfile();
   if(!profile){
     return RedirectToSignIn({});
   }
   const currentMember=await db.member.findFirst({
     where:{
-      serverId:params.serverId,
+      serverId:serverId,
       profileId:profile.id,
     },
     include:{
@@ -39,20 +41,20 @@ const MemberIdPage = async ({params,searchParams}:MemberIdPageProps) => {
   }
 
   const conversation=await getOrCreateConversation(
-    currentMember.id,params.memberId);
+    currentMember.id,memberId);
   if(!conversation){
-    return redirect(`/server/${params.serverId}`);
+    return redirect(`/server/${serverId}`);
   }
 
   const {memberOne,memberTwo}=conversation;
   const otherMember=memberOne.profileId===profile.id?memberTwo:memberOne;
   return (
     <div className="bg-white dark:bg-[#313338] flex flex-col h-screen">
-      <ChatHeader imageUrl={otherMember.profile.imageUrl} name={otherMember.profile.name} serverId={params.serverId} type="conversation"/>
-      {searchParams.video&&(
+      <ChatHeader imageUrl={otherMember.profile.imageUrl} name={otherMember.profile.name} serverId={serverId} type="conversation"/>
+      {video&&(
         <MediaRoom chatId={conversation.id} video={true} audio={true}/>
       )}
-      {!searchParams.video&&(
+      {!video&&(
         <>
         <ChatMessages 
       member= {currentMember}
