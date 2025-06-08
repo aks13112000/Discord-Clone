@@ -5,7 +5,7 @@ import { MemberRole } from "@prisma/client";
 
 export async function DELETE(
     req:Request,
-     context: { params }: { params: { channelId: string } }
+     context: { params: { channelId: string } }
 ){
     const { params } = context;
     try{
