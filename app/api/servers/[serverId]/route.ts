@@ -28,7 +28,7 @@ export async function DELETE(
 }
 
 export async function PATCH(
-    req:Request, {params}:{params:{serverId:string}}
+    req:Request, {params}:{params:Promise<{serverId:string}>}
 ){
     try{
         const profile=await currentProfile();
