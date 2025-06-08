@@ -6,7 +6,7 @@ import { db } from "@/lib/db"
 
 export async function PATCH(
     req: Request,
-    { params } : { params : { serverId: string }}
+    { params } : { params :Promise<{ serverId: string }>}
 ) {
     if (req.method !== "PATCH") {
         return new NextResponse("Method Not Allowed", { status: 405 });
