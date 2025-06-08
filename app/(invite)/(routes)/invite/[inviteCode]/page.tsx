@@ -19,14 +19,14 @@ const InviteCodePage = async ({
     if(!profile) {
         return RedirectToSignIn({});
     }
-const params= await props.params;
-    if(!params.inviteCode) {
+const param= await props.params;
+    if(!param.inviteCode) {
         return redirect("/")
     }
 
     const existingServer = await db.server.findFirst({
         where: {
-            inviteCode: params.inviteCode,
+            inviteCode: param.inviteCode,
             members: {
                 some: {
                     profileId: profile.id
@@ -41,7 +41,7 @@ const params= await props.params;
 
     const server = await db.server.update({
         where: {
-            inviteCode: params.inviteCode,
+            inviteCode: param.inviteCode,
         },
         data: {
             members: {
