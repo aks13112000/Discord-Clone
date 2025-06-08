@@ -5,9 +5,8 @@ import { MemberRole } from "@prisma/client";
 
 export async function DELETE(
     req:Request,
-     context: { params: { channelId: string } }
+      { params }: { params: Promise<{ channelId: string }> }
 ){
-    const { params } = context;
     try{
         const profile = await currentProfile();
         const {searchParams}=new URL(req.url);
