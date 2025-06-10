@@ -35,8 +35,8 @@ export const ChatMessages=({name,member,chatId,apiUrl,socketUrl,socketQuery,para
     const addKey = `chat:${chatId}:messages`;
     const updateKey = `chat:${chatId}:messages:update`;
 
-    const chatRef=useRef<ComponentRef<"div">>(null);
-    const bottomRef=useRef<ComponentRef<"div">>(null);
+    const chatRef=useRef<ComponentRef<"div">>(null!);
+    const bottomRef=useRef<ComponentRef<"div">>(null!);
 
     const {data,fetchNextPage,hasNextPage,isFetchingNextPage,status}=useChatQuery({
         queryKey,apiUrl,paramKey,paramValue,
