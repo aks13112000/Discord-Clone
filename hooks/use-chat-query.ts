@@ -1,6 +1,7 @@
 import qs from "query-string";
 import {useInfiniteQuery} from "@tanstack/react-query";
 import { useSocket } from "@/components/providers/socket-provider";
+import { QueryStatus } from "@tanstack/react-query";
 
 interface ChatQueryProps {
     queryKey:string;
@@ -28,11 +29,12 @@ export const useChatQuery=({queryKey,apiUrl,paramKey,paramValue}:ChatQueryProps)
         refetchInterval: isConnected ? false : 1000,
     });
 
+ const typedStatus: QueryStatus = status;
     return {
         data,
         fetchNextPage,
         hasNextPage,
         isFetchingNextPage,
-        status,
+        status:typedStatus,
     };
 };
