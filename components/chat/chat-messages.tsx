@@ -45,7 +45,7 @@ export const ChatMessages=({name,member,chatId,apiUrl,socketUrl,socketQuery,para
     useChatSocket({ queryKey, addKey, updateKey});
     useChatScroll({chatRef,bottomRef,loadMore:fetchNextPage,shouldLoadMore:!isFetchingNextPage &&!!hasNextPage,count:data?.pages[0]?.items?.length??0});
    
-    // @ts-expect-error
+    // @ts-expect-error: expect loading
     if(status==="loading"){
         return(
             <div className="flex flex-col flex-1 justify-center items-center">
