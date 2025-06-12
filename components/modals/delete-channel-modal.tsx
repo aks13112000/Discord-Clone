@@ -31,10 +31,10 @@ export const DeleteChannelModal = () => {
   
     const [isLoading,setIsLoading]=useState(false);
 
-    // @ts-expect-error: null id
     const onClick = async () => {
         try {
             setIsLoading(true);
+            // @ts-expect-error: expect null id
             const url=qs.stringifyUrl({
                 url:`/api/channels/${channel?.id}`,
                 query:{serverId:server?.id,}
