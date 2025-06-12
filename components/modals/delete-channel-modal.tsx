@@ -42,6 +42,7 @@ export const DeleteChannelModal = () => {
             await axios.delete(url);
             onClose();
             router.refresh();
+            // @ts-expect-error: expect null id
             router.push(`/server/${server?.id}`);
 
         } catch (error) {
