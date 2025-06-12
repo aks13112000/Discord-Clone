@@ -54,9 +54,9 @@ export const DeleteServerModal = () => {
                     <DialogTitle className="text-2xl text-center font-bold">
                     Delete Server
                     </DialogTitle>
+                    {// @ts-expect-error: expect null name}
                     <DialogDescription className="text-center text-zinc-500">
                         Are you sure you want to do this? <br/> 
-                        {// @ts-expect-error: expect null name}
                         <span
                         className="font-semibold text-indigo-500">{server?.name}</span>
                         will be permanently deleted.
