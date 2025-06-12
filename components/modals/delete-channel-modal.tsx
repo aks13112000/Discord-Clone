@@ -34,9 +34,9 @@ export const DeleteChannelModal = () => {
     const onClick = async () => {
         try {
             setIsLoading(true);
-            // @ts-expect-error: expect null id
             const url=qs.stringifyUrl({
                 url:`/api/channels/${channel?.id}`,
+                // @ts-expect-error: expect null id
                 query:{serverId:server?.id,}
             })
             await axios.delete(url);
