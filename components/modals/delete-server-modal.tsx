@@ -33,6 +33,7 @@ export const DeleteServerModal = () => {
     const onClick = async () => {
         try {
             setIsLoading(true);
+            // @ts-expect-error: expect null id
             await axios.delete(`/api/servers/${server?.id}`);
             onClose();
             router.refresh();
