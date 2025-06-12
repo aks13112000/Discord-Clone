@@ -31,6 +31,7 @@ export const DeleteChannelModal = () => {
   
     const [isLoading,setIsLoading]=useState(false);
 
+    // @ts-expect-error: null id
     const onClick = async () => {
         try {
             setIsLoading(true);
