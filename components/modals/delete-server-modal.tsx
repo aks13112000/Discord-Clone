@@ -26,6 +26,19 @@ export const DeleteServerModal = () => {
 
     const isModalOpen = isOpen && type === "deleteServer";
     const { server } = data;
+   // @ts-expect-error: expect null name
+    const serverName = server?.name;
+
+return (
+  <DialogDescription className="text-center text-zinc-500">
+    Are you sure you want to do this? <br />
+    <span className="font-semibold text-indigo-500">
+      {serverName}
+    </span>
+    will be permanently deleted.
+  </DialogDescription>
+);
+
 
   
     const [isLoading,setIsLoading]=useState(false);
@@ -57,7 +70,7 @@ export const DeleteServerModal = () => {
                     <DialogDescription className="text-center text-zinc-500">
                         Are you sure you want to do this? <br/> 
                         <span
-                        className="font-semibold text-indigo-500">{server?.name?? "Unnamed Server"}</span>
+                        className="font-semibold text-indigo-500">{serverName}</span>
                         will be permanently deleted.
                     </DialogDescription>
                 </DialogHeader>
