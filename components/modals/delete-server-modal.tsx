@@ -26,19 +26,8 @@ export const DeleteServerModal = () => {
 
     const isModalOpen = isOpen && type === "deleteServer";
     const { server } = data;
-   // @ts-expect-error: expect null name
+    // @ts-expect-error:expect null name
     const serverName = server?.name;
-
-return (
-  <DialogDescription className="text-center text-zinc-500">
-    Are you sure you want to do this? <br />
-    <span className="font-semibold text-indigo-500">
-      {serverName}
-    </span>
-    will be permanently deleted.
-  </DialogDescription>
-);
-
 
   
     const [isLoading,setIsLoading]=useState(false);
@@ -46,7 +35,7 @@ return (
     const onClick = async () => {
         try {
             setIsLoading(true);
-            // @ts-expect-error: expect null id
+            // @ts-expect-error:expect null id
             await axios.delete(`/api/servers/${server?.id}`);
             onClose();
             router.refresh();
@@ -68,8 +57,7 @@ return (
                     Delete Server
                     </DialogTitle>
                     <DialogDescription className="text-center text-zinc-500">
-                        Are you sure you want to do this? <br/> 
-                        <span
+                        Are you sure you want to do this? <br/> <span
                         className="font-semibold text-indigo-500">{serverName}</span>
                         will be permanently deleted.
                     </DialogDescription>
