@@ -30,7 +30,7 @@ export const InviteModal = () => {
 
     const [copied, setCopied] = useState(false);
     const [isLoading,setIsLoading]=useState(false);
-
+    //ts-expect error:expect null invitecode
     const inviteUrl = `${origin}/invite/${server?.inviteCode}`;
 
 
