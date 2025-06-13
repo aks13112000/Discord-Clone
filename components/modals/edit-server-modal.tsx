@@ -55,6 +55,7 @@ export const EditServerModal = () => {
 
     useEffect(() => {
         if(server){
+            // @ts-expect-error:expect null name 
             form.setValue("name", server.name);
             form.setValue("imageUrl", server.imageUrl);
         }
