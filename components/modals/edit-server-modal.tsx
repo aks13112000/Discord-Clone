@@ -66,6 +66,7 @@ export const EditServerModal = () => {
 
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
      try{
+         // @ts-expect-error:expect null id 
         await axios.patch(`/api/servers/${server?.id}`,values);
 
         
