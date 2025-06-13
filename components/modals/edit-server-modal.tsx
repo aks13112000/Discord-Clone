@@ -57,6 +57,7 @@ export const EditServerModal = () => {
         if(server){
             // @ts-expect-error:expect null name 
             form.setValue("name", server.name);
+            // @ts-expect-error:expect null imageurl
             form.setValue("imageUrl", server.imageUrl);
         }
     }, [server,form]);
