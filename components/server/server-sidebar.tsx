@@ -182,6 +182,7 @@ export const ServerSidebar = async ({ serverId }: ServerSidebarProps) => {
                 {!!members?.length && (
                     <div className="mb-2">
                         <ServerSection
+                             // @ts-expect-error:expect-null members
                             sectionType="members"
                             role={role}
                             label="Members"
