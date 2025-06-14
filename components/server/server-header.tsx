@@ -26,6 +26,7 @@ interface ServerHeaderProps {
             <DropdownMenuContent className="w-56 text-xs font-medium text-black dark:text-neutral-400 space-y-[2px]">
                 {isModerator&&(
                     <DropdownMenuItem 
+                             // @ts-expect-error:expect-null server
                     onClick={() => onOpen("invite", { server })}
 
                     className="text-indigo-600 dark:text-indigo-400 px-3 py-2 text-sm cursor-pointer">
@@ -41,6 +42,7 @@ interface ServerHeaderProps {
                 )}
                 {isAdmin&&(
                     <DropdownMenuItem 
+                             // @ts-expect-error:expect-null server
                     onClick={()=>onOpen("members",{ server })}
                     className="px-3 py-2 text-sm cursor-pointer">
                         Manage Members
@@ -59,6 +61,7 @@ interface ServerHeaderProps {
                 )}
                  {isAdmin&&(
                     <DropdownMenuItem 
+                         // @ts-expect-error:expect-null server
                     onClick={() => onOpen("deleteServer", { server})}
                     className="text-rose-500 px-3 py-2 text-sm cursor-pointer">
                         Delete Server
@@ -67,6 +70,7 @@ interface ServerHeaderProps {
                 )}
                 {!isAdmin&&(
                     <DropdownMenuItem
+                         // @ts-expect-error:expect-null server
                     onClick={()=>onOpen("leaveServer",{ server })}
                      className="text-rose-500 px-3 py-2 text-sm cursor-pointer">
                         Leave Server
