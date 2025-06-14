@@ -45,6 +45,7 @@ export const ServerSection = ( {
             {role !== MemberRole.ADMIN && sectionType === "members" && (
                     <ActionTooltip label="Manage Members " side="top">
                         <button 
+                        // @ts-expect-error:expect-null server
                         onClick={() => onOpen ("members", { server })}
                         className="text-zinc-500 hover:text-zinc-600
                         dark:text-zinc-400 dark:hover:text-zinc-300">
