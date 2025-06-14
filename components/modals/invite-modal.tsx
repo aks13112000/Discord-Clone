@@ -46,6 +46,7 @@ export const InviteModal = () => {
     const onNew = async () => {
         try {
             setIsLoading(true);
+             // @ts-expect-error:expect-null id
             const response = await axios.patch(`/api/servers/${server?.id}/
                 invite-code`);
                 console.log("Server Response:", response.data);
