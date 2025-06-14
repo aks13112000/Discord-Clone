@@ -23,7 +23,7 @@ export const useChatQuery=({queryKey,apiUrl,paramKey,paramValue}:ChatQueryProps)
         const res=await fetch(url);
         return res.json();
     };
-
+     // @ts-expect-error:expect-null return
     const {data,fetchNextPage,hasNextPage,isFetchingNextPage,status}=useInfiniteQuery({queryKey:[queryKey],queryFn:fetchMessages,getNextPageParam:(lastPage)=>lastPage?.nextCursor,
         refetchInterval: isConnected ? false : 1000,
     });
