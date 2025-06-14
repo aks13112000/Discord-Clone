@@ -137,6 +137,7 @@ export const ServerSidebar = async ({ serverId }: ServerSidebarProps) => {
                 {!!audioChannels?.length && (
                     <div className="mb-2">
                         <ServerSection
+                             // @ts-expect-error:expect-null channel
                             sectionType="channels"
                             channelType={ChannelType.AUDIO}
                             role={role}
