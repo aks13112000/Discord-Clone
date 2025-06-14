@@ -18,6 +18,7 @@ export const ServerSection = ( {
     label,
     role,
     sectionType,
+     // @ts-expect-error:expect-null channeltype
     channelType,
     server,
 }: ServerSectionProps) => {
