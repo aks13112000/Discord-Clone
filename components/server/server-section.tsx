@@ -30,6 +30,7 @@ export const ServerSection = ( {
             <p className="text-xs uppercase font-semibold text-zinc-500 dark:text-zinc-400">
                 {label}
                 </p>
+            {/* @ts-expect-error:expect-null server*/}
                 {role !== MemberRole.GUEST && sectionType === "channels" && (
                     <ActionTooltip label="Create Channel" side="top">
                         <button 
