@@ -49,6 +49,7 @@ export const MembersModal = () => {
     const [loadingId, setLoadingId] = useState("");
 
     const isModalOpen = isOpen && type === "members";
+         // @ts-expect-error:expect-null server
     const { server } = data as { server: ServerWithMembersWithProfiles }; 
 
 
