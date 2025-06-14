@@ -160,6 +160,7 @@ export const ServerSidebar = async ({ serverId }: ServerSidebarProps) => {
                 {!!videoChannels?.length && (
                     <div className="mb-2">
                         <ServerSection
+                             // @ts-expect-error:expect-null server
                             sectionType="channels"
                             channelType={ChannelType.VIDEO}
                             role={role}
