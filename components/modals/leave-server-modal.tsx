@@ -33,6 +33,7 @@ export const LeaveServerModal = () => {
     const onClick = async () => {
         try {
             setIsLoading(true);
+             // @ts-expect-error:expect-null id
             await axios.patch(`/api/servers/${server?.id}/leave`);
             onClose();
             router.refresh();
