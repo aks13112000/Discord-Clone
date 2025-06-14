@@ -26,6 +26,8 @@ export const LeaveServerModal = () => {
 
     const isModalOpen = isOpen && type === "leaveServer";
     const { server } = data;
+    // @ts-expect-error:expect-null name
+    const serverName = server?.name
 
   
     const [isLoading,setIsLoading]=useState(false);
@@ -56,7 +58,7 @@ export const LeaveServerModal = () => {
                     </DialogTitle>
                     <DialogDescription className="text-center text-zinc-500">
                         Are you sure you want to leave <span
-                        className="font-semibold text-indigo-500">{server?.name}</span>
+                        className="font-semibold text-indigo-500">{serverName}</span>
                     </DialogDescription>
                 </DialogHeader>
                <DialogFooter className="bg-gray-100 px-6 py-4">
